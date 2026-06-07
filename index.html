@@ -1,217 +1,668 @@
-<!DOCTYPE HTML>
-<!--
-	Landed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Landed by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload landing">
-		<div id="page-wrapper">
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ADROPION BT. — Informatikai rendszerek a medveállatka szívósságával</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#edefe9;
+    --paper-2:#e4e7df;
+    --ink:#20271f;
+    --ink-soft:#3a4438;
+    --moss:#6a7d62;
+    --moss-deep:#566250;
+    --line:rgba(32,39,31,0.16);
+    --line-soft:rgba(32,39,31,0.09);
+    --maxw:1240px;
+    --pad:clamp(20px,5vw,72px);
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --display:"Space Mono","IBM Plex Mono",monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--mono);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    background-image:
+      linear-gradient(var(--line-soft) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+    background-size:64px 64px;
+    background-position:center top;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--ink);color:var(--paper);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad);}
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo"><a href="index.html">Landed</a></h1>
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li>
-								<a href="#">Layouts</a>
-								<ul>
-									<li><a href="left-sidebar.html">Left Sidebar</a></li>
-									<li><a href="right-sidebar.html">Right Sidebar</a></li>
-									<li><a href="no-sidebar.html">No Sidebar</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option 1</a></li>
-											<li><a href="#">Option 2</a></li>
-											<li><a href="#">Option 3</a></li>
-											<li><a href="#">Option 4</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a href="elements.html">Elements</a></li>
-							<li><a href="#" class="button primary">Sign Up</a></li>
-						</ul>
-					</nav>
-				</header>
+  /* ---------- type ---------- */
+  .eyebrow{
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--moss-deep);font-weight:500;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--moss);}
+  h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.04;margin:0;letter-spacing:-.01em;}
+  .section-tag{
+    font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--moss-deep);
+    border-top:1px solid var(--ink);padding-top:10px;display:flex;justify-content:space-between;
+    margin-bottom:34px;
+  }
 
-			<!-- Banner -->
-				<section id="banner">
-					<div class="content">
-						<header>
-							<h2>The future has landed</h2>
-							<p>And there are no hoverboards or flying cars.<br />
-							Just apps. Lots of mother flipping apps.</p>
-						</header>
-						<span class="image"><img src="images/pic01.jpg" alt="" /></span>
-					</div>
-					<a href="#one" class="goto-next scrolly">Next</a>
-				</section>
+  /* ---------- header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--paper) 86%,transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:64px;}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;letter-spacing:.02em;}
+  .brand svg{width:42px;height:30px;color:var(--ink);}
+  .brand .tld{color:var(--moss-deep);font-weight:400;}
+  .nav-links{display:flex;gap:26px;font-size:13px;}
+  .nav-links a{color:var(--ink-soft);transition:color .2s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links .idx{color:var(--moss);margin-right:5px;}
+  .lang{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;font-size:12px;}
+  .lang button{
+    appearance:none;border:0;background:transparent;cursor:pointer;
+    font-family:var(--mono);padding:6px 11px;color:var(--ink-soft);letter-spacing:.08em;
+  }
+  .lang button.on{background:var(--ink);color:var(--paper);}
+  .menu-btn{display:none;}
 
-			<!-- One -->
-				<section id="one" class="spotlight style1 bottom">
-					<span class="image fit main"><img src="images/pic02.jpg" alt="" /></span>
-					<div class="content">
-						<div class="container">
-							<div class="row">
-								<div class="col-4 col-12-medium">
-									<header>
-										<h2>Odio faucibus ipsum integer consequat</h2>
-										<p>Nascetur eu nibh vestibulum amet gravida nascetur praesent</p>
-									</header>
-								</div>
-								<div class="col-4 col-12-medium">
-									<p>Feugiat accumsan lorem eu ac lorem amet sed accumsan donec.
-									Blandit orci porttitor semper. Arcu phasellus tortor enim mi
-									nisi praesent dolor adipiscing. Integer mi sed nascetur cep aliquet
-									augue varius tempus lobortis porttitor accumsan consequat
-									adipiscing lorem dolor.</p>
-								</div>
-								<div class="col-4 col-12-medium">
-									<p>Morbi enim nascetur et placerat lorem sed iaculis neque ante
-									adipiscing adipiscing metus massa. Blandit orci porttitor semper.
-									Arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer
-									mi sed nascetur cep aliquet augue varius tempus. Feugiat lorem
-									ipsum dolor nullam.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<a href="#two" class="goto-next scrolly">Next</a>
-				</section>
+  /* ---------- hero ---------- */
+  .hero{padding-top:clamp(48px,8vw,104px);padding-bottom:clamp(48px,8vw,96px);}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,72px);align-items:center;}
+  .hero h1{font-size:clamp(40px,7vw,88px);}
+  .hero h1 .l2{color:var(--moss-deep);}
+  .hero .sub{max-width:46ch;margin-top:24px;color:var(--ink-soft);font-size:clamp(14px,1.4vw,16px);}
+  .type-line{
+    margin-top:28px;font-size:15px;color:var(--ink);
+    border:1px solid var(--line);background:var(--paper-2);
+    padding:13px 16px;display:flex;align-items:center;gap:10px;border-radius:2px;
+  }
+  .type-line .prompt{color:var(--moss);}
+  .type-text{font-weight:500;}
+  .cursor{display:inline-block;width:9px;height:1.05em;background:var(--ink);translate:0 2px;animation:blink 1.05s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;}
+  .btn{
+    font-family:var(--mono);font-size:13px;letter-spacing:.04em;
+    padding:13px 20px;border:1px solid var(--ink);border-radius:2px;
+    display:inline-flex;align-items:center;gap:9px;transition:.2s;
+  }
+  .btn .arr{transition:translate .2s;}
+  .btn:hover .arr{translate:4px 0;}
+  .btn.solid{background:var(--ink);color:var(--paper);}
+  .btn.solid:hover{background:var(--ink-soft);}
+  .btn.ghost:hover{background:var(--paper-2);}
 
-			<!-- Two -->
-				<section id="two" class="spotlight style2 right">
-					<span class="image fit main"><img src="images/pic03.jpg" alt="" /></span>
-					<div class="content">
-						<header>
-							<h2>Interdum amet non magna accumsan</h2>
-							<p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
-						</header>
-						<p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
-						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
-						</ul>
-					</div>
-					<a href="#three" class="goto-next scrolly">Next</a>
-				</section>
+  /* specimen frame */
+  .specimen{
+    position:relative;border:1px solid var(--ink);background:
+      repeating-linear-gradient(0deg,transparent,transparent 15px,var(--line-soft) 15px,var(--line-soft) 16px),
+      repeating-linear-gradient(90deg,transparent,transparent 15px,var(--line-soft) 15px,var(--line-soft) 16px),
+      var(--paper-2);
+    aspect-ratio:1/.92;display:flex;align-items:center;justify-content:center;border-radius:2px;
+  }
+  .specimen .corner{position:absolute;width:10px;height:10px;border:1px solid var(--ink);}
+  .specimen .c1{top:-1px;left:-1px;border-right:0;border-bottom:0;}
+  .specimen .c2{top:-1px;right:-1px;border-left:0;border-bottom:0;}
+  .specimen .c3{bottom:-1px;left:-1px;border-right:0;border-top:0;}
+  .specimen .c4{bottom:-1px;right:-1px;border-left:0;border-top:0;}
+  .specimen .label{position:absolute;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-deep);}
+  .specimen .label.tl{top:12px;left:14px;}
+  .specimen .label.br{bottom:12px;right:14px;}
+  .specimen .scale{position:absolute;bottom:14px;left:14px;display:flex;align-items:center;gap:7px;font-size:11px;color:var(--ink-soft);}
+  .specimen .scale .bar{width:38px;height:1px;background:var(--ink);position:relative;}
+  .specimen .scale .bar::before,.specimen .scale .bar::after{content:"";position:absolute;top:-3px;width:1px;height:7px;background:var(--ink);}
+  .specimen .scale .bar::after{right:0;}
+  .bear{width:64%;height:auto;color:var(--ink);overflow:visible;}
+  /* specimen drawing + user-replaceable slot */
+  .specimen-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
+  .specimen .bear{display:none;}
+  .bear-custom{display:block;max-width:84%;max-height:82%;width:auto;height:auto;object-fit:contain;}
+  .specimen{cursor:pointer;}
+  .art-hint{position:absolute;bottom:34px;left:14px;right:14px;text-align:center;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--moss-deep);opacity:0;transition:opacity .2s;pointer-events:none;}
+  .specimen:hover .art-hint{opacity:.85;}
+  .specimen.drag{outline:2px dashed var(--moss);outline-offset:-7px;}
+  .specimen.drag .art-hint{opacity:1;}
+  .art-reset{position:absolute;top:9px;right:11px;width:22px;height:22px;display:none;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);font-family:var(--mono);font-size:15px;line-height:1;border-radius:2px;cursor:pointer;padding:0;z-index:3;}
+  .art-reset:hover{background:var(--paper-2);color:var(--ink);}
+  .specimen.has-custom .art-reset{display:flex;}
 
-			<!-- Three -->
-				<section id="three" class="spotlight style3 left">
-					<span class="image fit main bottom"><img src="images/pic04.jpg" alt="" /></span>
-					<div class="content">
-						<header>
-							<h2>Interdum felis blandit praesent sed augue</h2>
-							<p>Accumsan integer ultricies aliquam vel massa sapien phasellus</p>
-						</header>
-						<p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
-						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
-						</ul>
-					</div>
-					<a href="#four" class="goto-next scrolly">Next</a>
-				</section>
+  /* bear legs idle wiggle */
+  @media (prefers-reduced-motion:no-preference){
+    .leg{transform-box:fill-box;transform-origin:top center;animation:step 2.6s ease-in-out infinite;}
+    .leg.l2{animation-delay:.32s;} .leg.l3{animation-delay:.64s;} .leg.l4{animation-delay:.96s;}
+    .leg.r1{animation-delay:.16s;} .leg.r2{animation-delay:.48s;} .leg.r3{animation-delay:.8s;} .leg.r4{animation-delay:1.12s;}
+    @keyframes step{0%,100%{transform:rotate(-4deg);}50%{transform:rotate(5deg);}}
+    .bear-float{animation:float 6s ease-in-out infinite;}
+    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+  }
 
-			<!-- Four -->
-				<section id="four" class="wrapper style1 special fade-up">
-					<div class="container">
-						<header class="major">
-							<h2>Accumsan sed tempus adipiscing blandit</h2>
-							<p>Iaculis ac volutpat vis non enim gravida nisi faucibus posuere arcu consequat</p>
-						</header>
-						<div class="box alt">
-							<div class="row gtr-uniform">
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-chart-area"></span>
-									<h3>Ipsum sed commodo</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-comment"></span>
-									<h3>Eleifend lorem ornare</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-flask"></span>
-									<h3>Cubilia cep lobortis</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-paper-plane"></span>
-									<h3>Non semper interdum</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-file"></span>
-									<h3>Odio laoreet accumsan</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-lock"></span>
-									<h3>Massa arcu accumsan</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-							</div>
-						</div>
-						<footer class="major">
-							<ul class="actions special">
-								<li><a href="#" class="button">Magna sed feugiat</a></li>
-							</ul>
-						</footer>
-					</div>
-				</section>
+  /* ---------- creature / comparison (inverted) ---------- */
+  .creature{background:var(--ink);color:var(--paper);margin-top:8px;
+    background-image:
+      linear-gradient(rgba(237,239,233,0.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(237,239,233,0.05) 1px,transparent 1px);
+    background-size:64px 64px;}
+  .creature .section-tag{color:#aebaa6;border-color:rgba(237,239,233,.3);}
+  .creature{padding-block:clamp(56px,9vw,110px);}
+  .creature h2{font-size:clamp(28px,4.4vw,52px);max-width:18ch;}
+  .creature .lead{max-width:62ch;margin-top:22px;color:#c7cdc1;font-size:clamp(14px,1.5vw,17px);}
+  .creature .lead b{color:var(--paper);font-weight:600;}
+  .cmp{margin-top:54px;border-top:1px solid rgba(237,239,233,.22);}
+  .cmp-head{display:grid;grid-template-columns:1fr 56px 1fr;gap:0;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9aa692;padding:14px 0;}
+  .cmp-head span:last-child{text-align:right;}
+  .cmp-row{display:grid;grid-template-columns:1fr 56px 1fr;gap:0;align-items:center;
+    border-top:1px solid rgba(237,239,233,.14);padding:22px 0;transition:background .25s;}
+  .cmp-row:hover{background:rgba(237,239,233,.04);}
+  .cmp-row .trait{padding-right:18px;}
+  .cmp-row .cap{padding-left:18px;text-align:right;}
+  .cmp-row .t{font-family:var(--display);font-size:clamp(16px,1.9vw,21px);font-weight:700;line-height:1.15;}
+  .cmp-row .cap .t{color:#cdd6c4;}
+  .cmp-row .d{font-size:12.5px;color:#9aa692;margin-top:7px;}
+  .cmp-row .mid{display:flex;align-items:center;justify-content:center;color:var(--moss);font-size:18px;}
 
-			<!-- Five -->
-				<section id="five" class="wrapper style2 special fade">
-					<div class="container">
-						<header>
-							<h2>Magna faucibus lorem diam</h2>
-							<p>Ante metus praesent faucibus ante integer id accumsan eleifend</p>
-						</header>
-						<form method="post" action="#" class="cta">
-							<div class="row gtr-uniform gtr-50">
-								<div class="col-8 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Your Email Address" /></div>
-								<div class="col-4 col-12-xsmall"><input type="submit" value="Get Started" class="fit primary" /></div>
-							</div>
-						</form>
-					</div>
-				</section>
+  /* ---------- services ---------- */
+  .services{padding-block:clamp(56px,9vw,110px);}
+  .services h2{font-size:clamp(28px,4.4vw,52px);}
+  .services .intro{max-width:54ch;margin-top:18px;color:var(--ink-soft);}
+  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:50px;border-top:1px solid var(--ink);}
+  .svc{
+    padding:30px 30px 34px;border-bottom:1px solid var(--line);position:relative;
+    transition:background .25s;border-right:1px solid var(--line);
+  }
+  .svc:nth-child(2n){border-right:0;}
+  .svc:hover{background:var(--paper-2);}
+  .svc .num{font-size:12px;color:var(--moss);letter-spacing:.1em;}
+  .svc .it{display:inline-block;margin-left:8px;font-size:11px;color:var(--moss-deep);letter-spacing:.08em;
+    border:1px solid var(--line);padding:1px 6px;border-radius:2px;vertical-align:middle;}
+  .svc h3{font-size:clamp(18px,2vw,23px);margin-top:18px;}
+  .svc .desc{margin-top:12px;color:var(--ink-soft);font-size:13.5px;max-width:38ch;}
+  .svc .hu-tag{margin-top:14px;font-size:11px;color:var(--moss-deep);letter-spacing:.06em;}
 
-			<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-						<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						<li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</footer>
+  /* ---------- company ---------- */
+  .company{background:var(--paper-2);border-block:1px solid var(--line);padding-block:clamp(56px,9vw,104px);}
+  .co-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,68px);}
+  .company h2{font-size:clamp(26px,4vw,46px);}
+  .company .co-note{margin-top:20px;color:var(--ink-soft);max-width:40ch;font-size:14px;}
+  .facts{border-top:1px solid var(--ink);}
+  .fact{display:grid;grid-template-columns:minmax(150px,.5fr) 1fr;gap:18px;
+    padding:16px 0;border-bottom:1px solid var(--line);font-size:14px;}
+  .fact dt{color:var(--moss-deep);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding-top:2px;}
+  .fact dd{margin:0;font-weight:500;}
+  .fact dd small{display:block;color:var(--ink-soft);font-weight:400;font-size:12px;margin-top:3px;}
 
-		</div>
+  /* ---------- contact ---------- */
+  .contact{padding-block:clamp(60px,10vw,120px);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,60px);align-items:end;}
+  .contact h2{font-size:clamp(30px,5.5vw,68px);}
+  .contact .lead{margin-top:20px;color:var(--ink-soft);max-width:40ch;}
+  .contact-list{margin-top:8px;}
+  .cl{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:16px 0;align-items:baseline;}
+  .cl .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--moss-deep);}
+  .cl .v{font-size:15px;font-weight:500;text-align:right;}
+  .cl .v small{color:var(--moss-deep);font-weight:400;}
+  .cl a.v:hover{color:var(--moss-deep);}
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  /* ---------- footer ---------- */
+  footer.site{border-top:1px solid var(--ink);padding-block:34px;}
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--ink-soft);}
+  .foot .brand svg{width:34px;height:24px;}
+  .foot .top{display:inline-flex;align-items:center;gap:8px;}
+  .foot .top:hover{color:var(--ink);}
 
-	</body>
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;}}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .specimen{max-width:380px;order:-1;}
+    .co-grid,.contact-grid{grid-template-columns:1fr;}
+    .svc-grid{grid-template-columns:1fr;}
+    .svc{border-right:0;}
+    .nav-links{display:none;}
+    .cmp-head,.cmp-row{grid-template-columns:1fr 34px 1fr;}
+    .cmp-row .t{font-size:15px;}
+  }
+  @media(max-width:520px){
+    body{background-size:40px 40px;}
+    .cmp-row{grid-template-columns:1fr;gap:14px;padding:20px 0;}
+    .cmp-row .cap{text-align:left;padding-left:0;border-left:2px solid var(--moss);padding-left:14px;}
+    .cmp-row .trait{padding-right:0;}
+    .cmp-row .mid{display:none;}
+    .cmp-head{display:none;}
+    .fact{grid-template-columns:1fr;gap:4px;}
+    .cl{flex-direction:column;gap:4px;}
+    .cl .v{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<template id="__bundler_thumbnail" data-bg-color="#edefe9">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#edefe9"/>
+    <g transform="translate(600 400) scale(3.6) translate(-82 -52)" stroke="#20271f" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M40 67 q-5 10 -8 17" stroke-width="6"/><path d="M62 69 q-3 10 -4 18" stroke-width="6"/><path d="M86 69 q-1 10 -1 18" stroke-width="6"/><path d="M110 67 q2 10 4 17" stroke-width="6"/>
+      <path d="M22 54 C 16 42, 22 35, 33 37 C 40 38, 43 35, 51 36 C 59 37, 62 34, 70 35 C 78 36, 82 33, 91 34 C 100 35, 106 34, 115 37 C 126 39, 137 41, 143 49 C 149 53, 149 57, 143 61 C 135 66, 126 67, 117 67 C 107 68, 100 70, 90 70 C 78 71, 66 71, 54 70 C 44 69, 34 68, 28 64 C 20 60, 17 60, 22 54 Z" fill="#edefe9" stroke-width="3"/>
+      <path d="M51 37 q3 9 -1 15" stroke-width="1.6"/><path d="M70 36 q3 10 -1 17" stroke-width="1.6"/><path d="M91 35 q3 10 -1 17" stroke-width="1.6"/><path d="M115 38 q3 9 -1 14" stroke-width="1.6"/>
+      <circle cx="129" cy="47" r="1.7" fill="#20271f" stroke="none"/>
+      <circle cx="145" cy="55" r="3.3" stroke-width="2.3"/>
+    </g>
+  </svg>
+</template>
+
+<!-- ============ HEADER ============ -->
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Adropion BT.">
+      <svg viewBox="0 0 160 100" fill="none" aria-hidden="true"><use href="#bear-mark"/></svg>
+      <span>ADROPION<span class="tld">_BT.</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#elolony"><span class="idx">01</span><span data-hu="Az élőlény" data-en="The creature">Az élőlény</span></a>
+      <a href="#szolgaltatasok"><span class="idx">02</span><span data-hu="Szolgáltatások" data-en="Services">Szolgáltatások</span></a>
+      <a href="#ceg"><span class="idx">03</span><span data-hu="A cég" data-en="The company">A cég</span></a>
+      <a href="#kapcsolat"><span class="idx">04</span><span data-hu="Kapcsolat" data-en="Contact">Kapcsolat</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Nyelv / Language">
+      <button data-lang="hu" class="on">HU</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow"><span data-hu="Medveállatka · Tardigrada" data-en="Water bear · Tardigrada">ADROPION</span></span>
+        <h1>
+          <span class="l1" data-hu="Apró élőlény," data-en="A tiny creature,">Apró élőlény,</span><br/>
+          <span class="l2" data-hu="szívós rendszerek." data-en="tenacious systems.">szívós rendszerek.</span>
+        </h1>
+        <p class="sub" data-hu="Szoftverfejlesztés, üzemeltetés és műszaki tanácsadás — a medveállatka ellenálló képességével felépítve. Kicsi csapat, ami mindenhol életképes." data-en="Software, operations and engineering consultancy — built with the resilience of a water bear. A small team that stays alive anywhere.">Szoftverfejlesztés, üzemeltetés és műszaki tanácsadás — a medveállatka ellenálló képességével felépítve. Kicsi csapat, ami mindenhol életképes.</p>
+
+        <div class="type-line">
+          <span class="prompt">adropion ~ %</span>
+          <span class="type-text" id="typewriter"></span><span class="cursor" aria-hidden="true"></span>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#szolgaltatasok" class="btn solid" style="background-color: rgb(45, 56, 43)"><span data-hu="Szolgáltatások" data-en="Our services">Szolgáltatások</span> <span class="arr">→</span></a>
+          <a href="#elolony" class="btn ghost"><span data-hu="Miért medveállatka?" data-en="Why a water bear?">Miért medveállatka?</span></a>
+        </div>
+      </div>
+
+      <div class="specimen bear-float">
+        <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="label tl">FIG.01 — TARDIGRADA</span>
+        <span class="label br" data-hu="ÉLŐ PÉLDÁNY" data-en="LIVE SPECIMEN">ÉLŐ PÉLDÁNY</span>
+        <div class="specimen-art">
+          <svg class="bear" viewBox="0 0 160 100" fill="none" aria-label="Medveállatka"><use href="#bear-mark"/></svg>
+          <img class="bear-custom" id="bearCustom" src="assets/bear-drawing.png" alt="Adropion medveállatka rajz" />
+        </div>
+        <button class="art-reset" id="artReset" type="button" title="Vissza a rajzhoz / Reset to drawing" aria-label="Reset">×</button>
+        <div class="art-hint" id="artHint" data-hu="⤓ Húzd ide vagy kattints a rajz cseréjéhez" data-en="⤓ Drop or click to replace the drawing">⤓ Húzd ide vagy kattints a rajz cseréjéhez</div>
+        <input type="file" id="artInput" accept="image/*" hidden />
+        <span class="scale"><span class="bar"></span>&lt; 1 mm</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 01 — THE CREATURE / COMPARISON ============ -->
+  <section class="creature" id="elolony" style="background-color: rgb(43, 55, 42)">
+    <div class="wrap">
+      <div class="section-tag reveal">
+        <span>// 01</span>
+        <span data-hu="Az élőlény ↔ a cég" data-en="The creature ↔ the company">ADROPION ↔ A CÉG</span>
+      </div>
+      <h2 class="reveal" data-hu="Miért épp medveállatka?" data-en="Why a water bear, exactly?">Miért épp medveállatka?</h2>
+      <p class="lead reveal" data-hu="Az Adropion a medveállatkák (Tardigrada) egyik nemzetsége: mikroszkopikus, 1 mm-nél kisebb, vízi élőlények, amelyek mohában, jég közelében és avarban is megélnek. Több mint 500 millió éve léteznek, és kibírják a kiszáradást, a vákuumot és a sugárzást is. A cég ugyanezeket az értékeket viszi az informatikába: ellenálló, alkalmazkodó, precíz." data-en="Adropion is a genus of tardigrades (water bears): microscopic, sub-millimetre aquatic animals that live in moss, near ice and in leaf litter. They have existed for over 500 million years and survive dehydration, vacuum and radiation. The company carries the same values into IT: resilient, adaptive, precise.">Az Adropion a medveállatkák (Tardigrada) egyik nemzetsége: mikroszkopikus, 1 mm-nél kisebb, vízi élőlények, amelyek mohában, jég közelében és avarban is megélnek. Több mint 500 millió éve léteznek, és kibírják a kiszáradást, a vákuumot és a sugárzást is. A cég ugyanezeket az értékeket viszi az informatikába: ellenálló, alkalmazkodó, precíz.</p>
+
+      <div class="cmp reveal">
+        <div class="cmp-head">
+          <span data-hu="A medveállatka" data-en="The water bear">A medveállatka</span>
+          <span></span>
+          <span data-hu="Adropion Bt." data-en="Adropion Bt.">Adropion Bt.</span>
+        </div>
+
+        <div class="cmp-row">
+          <div class="trait"><div class="t" data-hu="Kiszárad, majd újraéled" data-en="Dries out, then revives">Kiszárad, majd újraéled</div><div class="d" data-hu="Kriptobiózisban éveket is túlél." data-en="Survives years in cryptobiosis.">Kriptobiózisban éveket is túlél.</div></div>
+          <div class="mid">↔</div>
+          <div class="cap"><div class="t" data-hu="Ellenálló rendszerek" data-en="Resilient systems">Ellenálló rendszerek</div><div class="d" data-hu="Magas rendelkezésre állás, mentés, helyreállítás." data-en="High availability, backup, recovery.">Magas rendelkezésre állás, mentés, helyreállítás.</div></div>
+        </div>
+
+        <div class="cmp-row">
+          <div class="trait"><div class="t" data-hu="Fél milliméter, mégis mindenütt" data-en="Half a millimetre, everywhere">Fél milliméter, mégis mindenütt</div><div class="d" data-hu="A sarkvidéktől a városi mohapárnáig." data-en="From polar ice to a city moss patch.">A sarkvidéktől a városi mohapárnáig.</div></div>
+          <div class="mid">↔</div>
+          <div class="cap"><div class="t" data-hu="Kis cég, széles lefedettség" data-en="Small firm, broad reach">Kis cég, széles lefedettség</div><div class="d" data-hu="Fejlesztés, üzemeltetés, oktatás, mérnöki munka." data-en="Development, operations, training, engineering.">Fejlesztés, üzemeltetés, oktatás, mérnöki munka.</div></div>
+        </div>
+
+        <div class="cmp-row">
+          <div class="trait"><div class="t" data-hu="500 millió éve alkalmazkodik" data-en="Adapting for 500 million years">500 millió éve alkalmazkodik</div><div class="d" data-hu="Túlélt öt nagy kihalási hullámot." data-en="Outlived five mass extinctions.">Túlélt öt nagy kihalási hullámot.</div></div>
+          <div class="mid">↔</div>
+          <div class="cap"><div class="t" data-hu="Rugalmas megoldások" data-en="Flexible solutions">Rugalmas megoldások</div><div class="d" data-hu="A feladathoz illő technológia, nem fordítva." data-en="Technology fit to the task, not the reverse.">A feladathoz illő technológia, nem fordítva.</div></div>
+        </div>
+
+        <div class="cmp-row">
+          <div class="trait"><div class="t" data-hu="Elviseli a vákuumot és a sugárzást" data-en="Endures vacuum and radiation">Elviseli a vákuumot és a sugárzást</div><div class="d" data-hu="Az űr körülményeit is kibírja." data-en="Withstands the conditions of open space.">Az űr körülményeit is kibírja.</div></div>
+          <div class="mid">↔</div>
+          <div class="cap"><div class="t" data-hu="Megerősített üzemeltetés" data-en="Hardened operations">Megerősített üzemeltetés</div><div class="d" data-hu="Biztonságos, felügyelt, stabil infrastruktúra." data-en="Secure, monitored, stable infrastructure.">Biztonságos, felügyelt, stabil infrastruktúra.</div></div>
+        </div>
+
+        <div class="cmp-row">
+          <div class="trait"><div class="t" data-hu="Nyolc láb, precíz lépés" data-en="Eight legs, precise steps">Nyolc láb, precíz lépés</div><div class="d" data-hu="Karmokkal kapaszkodik a mikrovilágban." data-en="Grips the microworld with tiny claws.">Karmokkal kapaszkodik a mikrovilágban.</div></div>
+          <div class="mid">↔</div>
+          <div class="cap"><div class="t" data-hu="Precíz, részletes munka" data-en="Precise, detailed work">Precíz, részletes munka</div><div class="d" data-hu="Áttekinthető kód, tiszta dokumentáció." data-en="Readable code, clean documentation.">Áttekinthető kód, tiszta dokumentáció.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 — SERVICES ============ -->
+  <section class="services wrap" id="szolgaltatasok">
+    <div class="section-tag reveal">
+      <span>// 02</span>
+      <span data-hu="Tevékenységi körök" data-en="Activities">Tevékenységi körök</span>
+    </div>
+    <h2 class="reveal" data-hu="Amivel foglalkozunk" data-en="What we do" style="color: rgb(45, 56, 43)">Amivel foglalkozunk</h2>
+    <p class="intro reveal" data-hu="Elsősorban informatikai munkák és rendszerek — kiegészítve mérnöki, oktatási és egészségügyi tevékenységgel." data-en="Primarily IT work and systems — complemented by engineering, education and health activities.">Elsősorban informatikai munkák és rendszerek — kiegészítve mérnöki, oktatási és egészségügyi tevékenységgel.</p>
+
+    <div class="svc-grid reveal">
+      <div class="svc">
+        <span class="num">[ 01 ]</span><span class="it">IT</span>
+        <h3 data-hu="Számítógépes programozás" data-en="Computer programming">Számítógépes programozás</h3>
+        <p class="desc" data-hu="Egyedi szoftverek, automatizálás és rendszerintegráció fejlesztése." data-en="Custom software, automation and system integration.">Egyedi szoftverek, automatizálás és rendszerintegráció fejlesztése.</p>
+        <div class="hu-tag" data-hu="TEÁOR · Számítógépes programozás" data-en="NACE · Computer programming">TEÁOR · Számítógépes programozás</div>
+      </div>
+      <div class="svc">
+        <span class="num">[ 02 ]</span><span class="it">IT</span>
+        <h3 data-hu="Egyéb információtechnológiai szolgáltatás" data-en="Other IT services">Egyéb információtechnológiai szolgáltatás</h3>
+        <p class="desc" data-hu="Üzemeltetés, terméktámogatás és háttér-infrastruktúra a napi működéshez." data-en="Operations, support and back-end infrastructure for daily work.">Üzemeltetés, terméktámogatás és háttér-infrastruktúra a napi működéshez.</p>
+        <div class="hu-tag" data-hu="TEÁOR · Egyéb IT szolgáltatás" data-en="NACE · Other IT service">TEÁOR · Egyéb IT szolgáltatás</div>
+      </div>
+      <div class="svc">
+        <span class="num">[ 03 ]</span><span class="it">IT</span>
+        <h3 data-hu="IT szaktanácsadás és rendszerüzemeltetés" data-en="IT consultancy & systems operation">IT szaktanácsadás és rendszerüzemeltetés</h3>
+        <p class="desc" data-hu="Számítástechnikai eszközök és rendszerek tervezése, beüzemelése és üzemeltetése." data-en="Planning, deploying and operating computing equipment and systems.">Számítástechnikai eszközök és rendszerek tervezése, beüzemelése és üzemeltetése.</p>
+        <div class="hu-tag" data-hu="TEÁOR · IT szaktanácsadás" data-en="NACE · IT consultancy">TEÁOR · IT szaktanácsadás</div>
+      </div>
+      <div class="svc">
+        <span class="num">[ 04 ]</span>
+        <h3 data-hu="Mérnöki tevékenység, műszaki tanácsadás" data-en="Engineering & technical consultancy">Mérnöki tevékenység, műszaki tanácsadás</h3>
+        <p class="desc" data-hu="Műszaki tervezés és szakértői tanácsadás projektekhez." data-en="Technical design and expert advice for projects.">Műszaki tervezés és szakértői tanácsadás projektekhez.</p>
+        <div class="hu-tag" data-hu="TEÁOR · Mérnöki tevékenység" data-en="NACE · Engineering">TEÁOR · Mérnöki tevékenység</div>
+      </div>
+      <div class="svc">
+        <span class="num">[ 05 ]</span>
+        <h3 data-hu="Szakmai középfokú oktatás" data-en="Vocational secondary education">Szakmai középfokú oktatás</h3>
+        <p class="desc" data-hu="Gyakorlatorientált szakmai képzés és oktatás." data-en="Practice-oriented vocational training and education.">Gyakorlatorientált szakmai képzés és oktatás.</p>
+        <div class="hu-tag" data-hu="TEÁOR · Szakmai középfokú oktatás" data-en="NACE · Vocational education">TEÁOR · Szakmai középfokú oktatás</div>
+      </div>
+      <div class="svc">
+        <span class="num">[ 06 ]</span>
+        <h3 data-hu="M.n.s. egyéb humánegészségügyi ellátás" data-en="Other human health activities n.e.c.">M.n.s. egyéb humánegészségügyi ellátás</h3>
+        <p class="desc" data-hu="Kiegészítő, máshová nem sorolt humánegészségügyi szolgáltatások." data-en="Complementary human health services not elsewhere classified.">Kiegészítő, máshová nem sorolt humánegészségügyi szolgáltatások.</p>
+        <div class="hu-tag" data-hu="TEÁOR · Egyéb humánegészségügy" data-en="NACE · Other human health">TEÁOR · Egyéb humánegészségügy</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 — COMPANY ============ -->
+  <section class="company" id="ceg">
+    <div class="wrap co-grid">
+      <div class="reveal">
+        <div class="section-tag">
+          <span>// 03</span>
+          <span data-hu="Cégadatok" data-en="Company data">Cégadatok</span>
+        </div>
+        <h2 data-hu="A cégről" data-en="The company">A cégről</h2>
+        <p class="co-note" data-hu="Az ADROPION Betéti Társaság 2023-ban alakult, székhelye Budapesten. Hivatalos, nyilvántartott adataink:" data-en="ADROPION Bt. was founded in 2023, registered in Budapest. Our official registry data:">Az ADROPION Betéti Társaság 2023-ban alakult, székhelye Budapesten. Hivatalos, nyilvántartott adataink:</p>
+      </div>
+      <div class="reveal">
+        <dl class="facts">
+          <div class="fact"><dt data-hu="Cégnév" data-en="Company name">Cégnév</dt><dd>ADROPION Betéti Társaság <small data-hu="rövidítve: ADROPION Bt." data-en="short: ADROPION Bt.">rövidítve: ADROPION Bt.</small></dd></div>
+          <div class="fact"><dt data-hu="Cégjegyzékszám" data-en="Registry number">
+</dt><dd></dd></div>
+          <div class="fact"><dt data-hu="Bejegyzés kelte" data-en="Date of registration">Bejegyzés kelte</dt><dd>2023.09.05.</dd></div>
+          <div class="fact"><dt data-hu="Székhely" data-en="Registered seat">Székhely</dt><dd>1123 Budapest, Nagyenyed utca 5. <small data-hu="bejegyzés: 2024.01.17." data-en="registered: 2024.01.17.">bejegyzés: 2024.01.17.</small></dd></div>
+          <div class="fact"><dt data-hu="Profil" data-en="Profile">Profil</dt><dd data-hu="Informatika, mérnöki munka, oktatás" data-en="IT, engineering, education">Informatika, mérnöki munka, oktatás</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 — CONTACT ============ -->
+  <section class="contact wrap" id="kapcsolat">
+    <div class="section-tag reveal">
+      <span>// 04</span>
+      <span data-hu="Kapcsolat" data-en="Contact">Kapcsolat</span>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <h2 data-hu="Beszéljünk." data-en="Let's talk.">Kapcsolat.</h2>
+        <p class="lead" data-hu="Informatikai fejlesztés, üzemeltetés vagy műszaki tanácsadás kéne? Írjon, és felvesszük a fonalat." data-en="Need development, operations or technical consultancy? Write to us and we'll pick it up.">Informatikai fejlesztés, üzemeltetés vagy műszaki tanácsadás kéne? Írjon, és felvesszük a fonalat.</p>
+      </div>
+      <div class="reveal contact-list">
+        <div class="cl"><span class="k" data-hu="E-mail" data-en="E-mail">E-mail</span><a class="v" href="mailto:info@adropion.hu"> </a></div>
+        <div class="cl"><span class="k" data-hu="Cím" data-en="Address">Cím</span><span class="v">1123 Budapest,<br/>Nagyenyed utca 5.</span></div>
+        <div class="cl"><span class="k" data-hu="Cégjegyzékszám" data-en="Registry no.">
+</span><span class="v">
+</span></div>
+        <div class="cl"><span class="k" data-hu="Nyitva" data-en="Hours">
+</span><span class="v" data-hu="H–P · 9:00–17:00" data-en="Mon–Fri · 9:00–17:00">
+</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="wrap foot">
+    <a class="brand" href="#top" aria-label="Adropion BT.">
+      <svg viewBox="0 0 160 100" fill="none" aria-hidden="true"><use href="#bear-mark"/></svg>
+      <span>ADROPION<span class="tld">_BT.</span></span>
+    </a>
+    <span>© 2026 ADROPION Bt. — <span data-hu="Minden jog fenntartva." data-en="All rights reserved.">Minden jog fenntartva.</span></span>
+    <a href="#top" class="top"><span data-hu="Vissza a tetejére" data-en="Back to top">Vissza a tetejére</span> ↑</a>
+  </div>
+</footer>
+
+<!-- ============ SHARED WATER-BEAR MARK (monoline, simple shapes) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="bearBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef0ea"/>
+      <stop offset="0.5" stop-color="#dfe2d8"/>
+      <stop offset="1" stop-color="#c6ccbe"/>
+    </linearGradient>
+    <radialGradient id="bearBelly" cx="0.5" cy="1" r="0.85">
+      <stop offset="0" stop-color="#20271f" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#20271f" stop-opacity="0"/>
+    </radialGradient>
+    <g id="bear-mark">
+      <!-- far-side legs (behind body, for depth) -->
+      <g stroke="currentColor" stroke-linejoin="round" opacity="0.32">
+        <g class="leg r1"><path d="M44 60 C 42 67 41 73 42 78 C 44 80 47 80 48 78 C 49 73 49 67 50 61 Z" fill="#cfd4c8" stroke-width="1.6"/><g stroke-width="1.2" fill="none" stroke-linecap="round"><path d="M42 78 c-1 2 -1 3 -1 4"/><path d="M45 79 c0 2 0 3 0 4"/><path d="M48 78 c1 2 1 3 1 4"/></g></g>
+        <g class="leg r2"><path d="M66 61 C 64 68 63 75 64 80 C 66 82 69 82 70 80 C 71 75 71 68 72 62 Z" fill="#cfd4c8" stroke-width="1.6"/><g stroke-width="1.2" fill="none" stroke-linecap="round"><path d="M64 80 c-1 2 -1 3 -1 4"/><path d="M67 81 c0 2 0 3 0 4"/><path d="M70 80 c1 2 1 3 1 4"/></g></g>
+        <g class="leg r3"><path d="M89 61 C 87 68 86 75 87 80 C 89 82 92 82 93 80 C 94 75 94 68 95 62 Z" fill="#cfd4c8" stroke-width="1.6"/><g stroke-width="1.2" fill="none" stroke-linecap="round"><path d="M87 80 c-1 2 -1 3 -1 4"/><path d="M90 81 c0 2 0 3 0 4"/><path d="M93 80 c1 2 1 3 1 4"/></g></g>
+        <g class="leg r4"><path d="M113 59 C 113 66 114 72 117 77 C 119 78 122 77 122 75 C 121 70 119 64 118 59 Z" fill="#cfd4c8" stroke-width="1.6"/><g stroke-width="1.2" fill="none" stroke-linecap="round"><path d="M114 77 c-1 2 -1 3 -1 4"/><path d="M117 77 c0 2 0 3 0 4"/><path d="M120 76 c1 2 1 3 1 4"/></g></g>
+      </g>
+
+      <!-- body fill + soft volumetric shading -->
+      <path id="bear-body" d="M16 56 Q14 46 24 42 A16 7 0 0 1 52 42 A15 7 0 0 1 78 41 A15 7 0 0 1 104 41 A14 6 0 0 1 126 44 C134 45 142 48 153 54 C148 58 142 62 132 65 C118 69 100 71 84 71 C68 71 52 70 40 68 C30 66 22 63 18 60 Q13 58 16 56 Z" fill="url(#bearBody)"/>
+      <path d="M16 56 Q14 46 24 42 A16 7 0 0 1 52 42 A15 7 0 0 1 78 41 A15 7 0 0 1 104 41 A14 6 0 0 1 126 44 C134 45 142 48 153 54 C148 58 142 62 132 65 C118 69 100 71 84 71 C68 71 52 70 40 68 C30 66 22 63 18 60 Q13 58 16 56 Z" fill="url(#bearBelly)" stroke="none"/>
+
+      <!-- cross-contour shading on the lower flank -->
+      <g stroke="#20271f" stroke-opacity="0.16" stroke-width="0.9" fill="none" stroke-linecap="round">
+        <path d="M34 60 q3 5 1 8"/><path d="M46 62 q3 5 1 8"/><path d="M60 63 q3 5 1 8"/>
+        <path d="M74 64 q3 5 1 8"/><path d="M88 64 q3 5 1 8"/><path d="M102 63 q3 5 1 8"/><path d="M116 61 q3 5 1 7"/>
+      </g>
+
+      <!-- body outline -->
+      <path d="M16 56 Q14 46 24 42 A16 7 0 0 1 52 42 A15 7 0 0 1 78 41 A15 7 0 0 1 104 41 A14 6 0 0 1 126 44 C134 45 142 48 153 54 C148 58 142 62 132 65 C118 69 100 71 84 71 C68 71 52 70 40 68 C30 66 22 63 18 60 Q13 58 16 56 Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+
+      <!-- segmentation bands wrapping the body -->
+      <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.55">
+        <path d="M26 43 C28 50 28 57 25 63"/>
+        <path d="M52 42 C55 49 55 58 50 66"/>
+        <path d="M78 41 C81 49 81 59 76 69"/>
+        <path d="M104 41 C107 49 107 59 102 69"/>
+        <path d="M126 45 C128 51 128 58 124 65"/>
+      </g>
+
+      <!-- head: eyespot + projecting mouth cone -->
+      <circle cx="134" cy="49" r="1.6" fill="currentColor" stroke="none"/>
+      <path d="M144 51 L153 54 L152 58 L143 60" fill="#dfe2d8" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <ellipse cx="152.5" cy="56" rx="1.4" ry="2.4" fill="none" stroke="currentColor" stroke-width="1.3"/>
+
+      <!-- near-side legs (animated, with claw clusters) -->
+      <g stroke="currentColor" stroke-linejoin="round">
+        <g class="leg l1"><path d="M36 66 C33 73 30 81 30 87 C32 90 37 90 39 87 C41 81 43 73 44 66 Z" fill="url(#bearBody)" stroke-width="2.1"/><g stroke-width="1.4" fill="none" stroke-linecap="round"><path d="M30 87 c-1.5 2 -1.5 4 -2 5"/><path d="M33 88 c-1 2 -1 4 -1.5 5"/><path d="M36 88 c0 2 0 4 0 5"/><path d="M39 87 c1 2 1 4 1.5 5"/></g></g>
+        <g class="leg l2"><path d="M58 68 C55 75 53 84 54 90 C56 93 61 93 63 90 C64 84 64 75 66 68 Z" fill="url(#bearBody)" stroke-width="2.1"/><g stroke-width="1.4" fill="none" stroke-linecap="round"><path d="M54 90 c-1.5 2 -1.5 4 -2 5"/><path d="M57 91 c-1 2 -1 4 -1 5"/><path d="M60 91 c0 2 0 4 0 5"/><path d="M63 90 c1 2 1 4 1.5 5"/></g></g>
+        <g class="leg l3"><path d="M80 69 C78 76 77 85 79 91 C81 94 86 94 87 91 C88 85 87 76 88 69 Z" fill="url(#bearBody)" stroke-width="2.1"/><g stroke-width="1.4" fill="none" stroke-linecap="round"><path d="M79 91 c-1.5 2 -1.5 4 -2 5"/><path d="M82 92 c-1 2 -0.5 4 -1 5"/><path d="M85 92 c0 2 0 4 0 5"/><path d="M87 91 c1 2 1 4 1.5 5"/></g></g>
+        <g class="leg l4"><path d="M104 67 C105 74 108 83 111 88 C114 90 118 88 118 84 C117 77 114 71 112 66 Z" fill="url(#bearBody)" stroke-width="2.1"/><g stroke-width="1.4" fill="none" stroke-linecap="round"><path d="M111 88 c-1 2 -1 4 -1.5 5"/><path d="M114 89 c0 2 0 4 0 5"/><path d="M117 88 c1 2 1 4 1 5"/><path d="M119 86 c1.5 2 1.5 3 2 4"/></g></g>
+      </g>
+    </g>
+  </defs>
+</svg>
+
+<script>
+(function(){
+  /* ---------- i18n ---------- */
+  var nodes = document.querySelectorAll('[data-hu]');
+  var typeTokens = {
+    hu: ['programozás','rendszerüzemeltetés','automatizálás','műszaki tanácsadás','infrastruktúra','integráció'],
+    en: ['programming','systems operations','automation','technical advice','infrastructure','integration']
+  };
+  var lang = (localStorage.getItem('adropion-lang') === 'en') ? 'en' : 'hu';
+
+  function applyLang(l){
+    lang = l;
+    document.documentElement.lang = l;
+    nodes.forEach(function(el){
+      var v = el.getAttribute('data-' + l);
+      if(v !== null) el.textContent = v;
+    });
+    document.querySelectorAll('.lang button').forEach(function(b){
+      b.classList.toggle('on', b.getAttribute('data-lang') === l);
+    });
+    localStorage.setItem('adropion-lang', l);
+    restartTypewriter();
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+  });
+
+  /* ---------- typewriter ---------- */
+  var tw = document.getElementById('typewriter');
+  var twTimer = null, twState = {i:0, c:0, del:false};
+  function restartTypewriter(){
+    if(twTimer) clearTimeout(twTimer);
+    twState = {i:0, c:0, del:false};
+    tw.textContent = '';
+    tick();
+  }
+  function tick(){
+    var arr = typeTokens[lang];
+    var word = arr[twState.i % arr.length];
+    if(!twState.del){
+      twState.c++;
+      tw.textContent = word.slice(0, twState.c);
+      if(twState.c >= word.length){ twState.del = true; twTimer = setTimeout(tick, 1400); return; }
+      twTimer = setTimeout(tick, 70 + Math.random()*60);
+    } else {
+      twState.c--;
+      tw.textContent = word.slice(0, Math.max(0,twState.c));
+      if(twState.c <= 0){ twState.del = false; twState.i++; twTimer = setTimeout(tick, 260); return; }
+      twTimer = setTimeout(tick, 36);
+    }
+  }
+
+  /* ---------- scroll reveal ---------- */
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  applyLang(lang);
+})();
+</script>
+
+<script>
+(function(){
+  /* ---------- user-supplied bear drawing (drag/drop or click) ---------- */
+  var KEY='adropion-bear-art';
+  var DEFAULT_SRC='assets/bear-drawing.png';
+  var spec=document.querySelector('.specimen');
+  if(!spec) return;
+  var img=document.getElementById('bearCustom');
+  var input=document.getElementById('artInput');
+  var resetBtn=document.getElementById('artReset');
+
+  function apply(data){
+    if(data){ img.src=data; spec.classList.add('has-custom'); }
+    else { img.src=DEFAULT_SRC; spec.classList.remove('has-custom'); }
+  }
+  try{ var saved=localStorage.getItem(KEY); if(saved) apply(saved); }catch(e){}
+
+  function loadFile(file){
+    if(!file || file.type.indexOf('image/')!==0) return;
+    var r=new FileReader();
+    r.onload=function(){
+      try{ localStorage.setItem(KEY, r.result); }
+      catch(e){ alert('A kép túl nagy a böngészőben tároláshoz. / Image too large to store.'); return; }
+      apply(r.result);
+    };
+    r.readAsDataURL(file);
+  }
+
+  ['dragenter','dragover'].forEach(function(ev){
+    spec.addEventListener(ev,function(e){ e.preventDefault(); spec.classList.add('drag'); });
+  });
+  ['dragleave','dragend'].forEach(function(ev){
+    spec.addEventListener(ev,function(e){ spec.classList.remove('drag'); });
+  });
+  spec.addEventListener('drop',function(e){
+    e.preventDefault(); spec.classList.remove('drag');
+    if(e.dataTransfer && e.dataTransfer.files) loadFile(e.dataTransfer.files[0]);
+  });
+  spec.addEventListener('click',function(e){
+    if(e.target.closest('#artReset')) return;
+    input.click();
+  });
+  input.addEventListener('change',function(){ if(input.files) loadFile(input.files[0]); input.value=''; });
+  resetBtn.addEventListener('click',function(e){
+    e.stopPropagation();
+    try{ localStorage.removeItem(KEY); }catch(err){}
+    apply(null);
+  });
+})();
+</script>
+</body>
 </html>
